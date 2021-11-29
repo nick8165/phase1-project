@@ -1,0 +1,10 @@
+{
+    "playerId" : [
+        {
+            "fullname": "Test Name",
+            "playertag": "Test Tag",
+            "birthday": "00/00/0000",
+            "wins": "0"
+        }
+    ]
+}

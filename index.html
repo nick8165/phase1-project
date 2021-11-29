@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="styles.css">
+<head></head>
+<body>
+    <h1>Local Smash Tournament Creater</h1>
+    <form id='registration'> 
+        <h2>Register Here</h2>
+        <table> 
+            <tr> 
+                <td> Full Name </td> 
+                <td> <input id='fullname' class='info' type="text" name=""> </td> 
+            </tr> 
+            <tr> 
+                <td> Player Tag </td> 
+                <td> <input id='playertag' class='info' type="text" name=""> </td> 
+            </tr> 
+            <tr> 
+                <td> Birthday mm/dd/yyyy </td> 
+                <td> <input id='birthday' class='info' type="text" name=""> </td> 
+            </tr>
+        </table> 
+        <input class='submit' type='submit' name="SUBMITBUTTON" value='Submit' />
+    </form>
+    <form id='participants'>
+        <select id="participant-number">
+            <option class="option" value='free' selected>Number of participants</option>
+            <option class="option" value="4">4</option>
+            <option class="option" value="8">8</option>
+            <option class="option" value="16">16</option>
+    </select>
+    <br>
+    <input class='submit' type='submit' name="SUBMITBUTTON" value='Submit' />
+</form>
+    
+<main id="tournament">
+    <table summary="Tournament Bracket" class="bracket">
+        <tr>
+            <th class='brk8'>Round 1</th>
+            <th class='brk4'>Quater Finals</th>
+            <th>Semi-Finals</th>
+            <th>Grand Finals</th>
+            <th>Winner</th>
+        </tr>
+
+        <tr>
+            
+            <td><input type='text' id= player1 class="search" placeholder="Search.."><p> </p></td>
+            <td rowspan="2"><p>winner round 1</p></td>
+            <td rowspan="4"><p>winner quater</p></td>
+        </tr>
+
+        <tr>
+            <td><input type='text' id= player2 class="search" placeholder="Search.."><p> </p></td>
+            <td class='brk4' rowspan="6"><p>winner semi</p></td>
+        </tr>
+
+        <tr>
+            <td><input type='text' id= player3 class="search" placeholder="Search.."><p> </p></td>
+            <td rowspan="2"><p>winner round 1</p></td>
+        </tr>
+
+        <tr>
+            <td><input type='text' id= player4 class="search" placeholder="Search.."><p> </p></td>
+            <td class='brk8' rowspan="8"><p>winner grand</p></td>
+        </tr>
+
+        <tr>
+            <td class='brk4'><input type='text' id= player5 class="search" placeholder="Search.."><p> </p></td>
+            <td class='brk4' rowspan="2"><p>winner round 1</p></td>
+            <td class='brk4' rowspan="4"><p>winner quater</p></td>
+        </tr>
+
+        <tr>
+            <td class='brk4'><input type='text' id= player6 class="search" placeholder="Search.."><p> </p></td>
+        </tr>
+        
+        <tr>
+            <td class='brk4'><input type='text' id= player7 class="search" placeholder="Search.."><p> </p></td>
+            <td class='brk4' rowspan="2"><p>winner round 1</p></td>
+        </tr>
+
+        <tr>
+            <td class='brk4'><input type='text' id= player8 class="search" placeholder="Search.."><p> </p></td>
+        </tr>
+
+        <tr>
+            <td class='brk8'><input type='text' id= player9 class="search" placeholder="Search.."><p> </p></td>
+            <td class='brk8' rowspan="2"><p>winner round 1</p></td>
+            <td class='brk8' rowspan="4"><p>winner quater</p></td>
+        </tr>
+
+        <tr>
+            <td class='brk8'><input type='text' id= player10 class="search" placeholder="Search.."><p> </p></td>
+            <td class='brk8' rowspan="6"><p>winner semi</p></td>
+        </tr>
+
+        <tr>
+            <td class='brk8'><input type='text' id= player11 class="search" placeholder="Search.."><p> </p></td>
+            <td class='brk8' rowspan="2"><p>winner round 1</p></td>
+        </tr>
+
+        <tr>
+            <td class='brk8'><input type='text' id= player12 class="search" placeholder="Search.."><p> </p></td>
+        </tr>
+
+        <tr>
+            <td class='brk8'><input type='text' id= player13 class="search" placeholder="Search.."><p> </p></td>
+            <td class='brk8' rowspan="2"><p>winner round 1</p></td>
+            <td class='brk8' rowspan="4"><p>winner quater</p></td>
+        </tr>
+
+        <tr>
+            <td class='brk8'><input type='text' id= player14 class="search" placeholder="Search.."><p> </p></td>
+        </tr>
+
+        <tr>
+            <td class='brk8'><input type='text' id= player15 class="search" placeholder="Search.."><p> </p></td>
+            <td class='brk8' rowspan="2"><p>winner round 1</p></td>
+        </tr>
+
+        <tr>
+            <td class='brk8'><input type='text' id= player16 class="search" placeholder="Search.."><p> </p></td>
+        </tr>
+
+        </table>
+</main>
+</body>
+</html>
+<script src="index.js"></script>

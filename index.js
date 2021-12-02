@@ -44,15 +44,6 @@ bracketNumber.addEventListener('submit', function (e) {
     }
 })
 
-//Placing Player in Bracket//
-playerSearch.addEventListener('keyup', function(event) {
-    if (event.keyCode === 13) {
-        event.preventDefault()
-        let playerId = event.target.value
-        console.log(playerId)
-    }
-})
- 
 //Registry//
 register.addEventListener('submit', function(event) {
     event.preventDefault()
@@ -66,16 +57,16 @@ register.addEventListener('submit', function(event) {
 
 function createPlayerFile(fullname, playertag, birthday) {
     let newPlayer = {
-        fullname: fullname.value,
-        playertag: playertag.value,
-        birthday: birthday.value,
+        fullname:fullname.value,
+        playertag:playertag.value,
+        birthday:birthday.value,
         wins: 0
     }
     return newPlayer
 }
 
 function checkForExistingTag(createdPlayer) {
-    fetch('http://localhost:3000/playerId')
+    fetch('http://localhost:3000/players')
     .then(res => res.json())
     .then(data => {
         let tag = data.find(key => key.playertag === createdPlayer.playertag)
@@ -88,16 +79,98 @@ function checkForExistingTag(createdPlayer) {
 }
 
 function postPlayerId(createdPlayer) {
-    console.log(JSON.stringify(createdPlayer))
-    fetch('http://localhost:3000/playerId',{
+    fetch('http://localhost:3000/players',{
         method: "POST",
         headers: {
+            "Accept": "application/json",
             "Content-Type": "application/json"
         },
-        body: JSON.stringify(createdPlayer),
+        body: JSON.stringify(createdPlayer)
     })
     .then(res => res.json())
     .then(json => console.log(json))
+}
+
+//Placing Player in Bracket//
+const playerNumber = document.getElementsByClassName('search')
+for (const element of playerNumber) {
+    element.addEventListener('keyup', function(event) {
+        if (event.keyCode === 13) {
+            event.preventDefault()
+            fetch('http://localhost:3000/players')
+            .then(res => res.json())
+            .then(data => {
+                let tag = data.find(key => key.playertag === event.target.value)
+                if (tag !== undefined) {
+                    event.target.className = "search-hidden"
+                    let playerId = event.target.value
+                    let p = event.target.nextSibling.nextSibling.nextSibling.nextSibling
+                    p.innerText = playerId
+                } else {
+                    window.alert("Must register first")
+                }
+            })
+        }
+    })
+}
+
+//Delete Player From Bracket//
+let del = document.getElementsByClassName('delete')
+for (const element of del) {
+    element.addEventListener('click', function(event) {
+        let para = event.target.parentNode.nextSibling.nextSibling
+        let search = event.target.parentNode.parentNode.children
+        let div = event.target.parentNode
+        para.innerText = ''
+        search[0].className = 'search'
+        div.children[0].innerText = '0'
+        div.className = "wins"
+        div.children[2].className = 'add'
+        div.children[3].className = 'sub'
+    })
+}
+//Increase and Decrease Win//
+let addButton = document.getElementsByClassName('add')
+for (const element of addButton) {
+    element.addEventListener('click', function add(event) {
+        let increase = event.target.parentNode
+        increase.children[0].innerText ++
+        if (increase.children[0].innerText === '3') {
+            increase.className = 'green'
+            increase.children[2].className = 'hidden'
+            increase.children[3].className = 'hidden'
+            let winner = increase.nextSibling.nextSibling
+            fetch('http://localhost:3000/players')
+                .then(res => res.json())
+                .then(data => {
+                let patchWinner = data.find(key => key.playertag === winner.innerText)
+                patchWinner.wins ++
+                patchWin(patchWinner)
+                console.log('works') 
+            })
+        }
+    })
+}
+
+function patchWin(patchWinner) {
+    fetch(`http://localhost:3000/players/${patchWinner.id}`,{
+        method: "PATCH",
+        headers: {
+            "Accept": "application/json",
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(patchWinner)
+    })
+    .then(res => res.json())
+    .then(json => console.log(json))
+}
+
+let subButton = document.getElementsByClassName('sub')
+for (const obj of subButton) {
+    obj.addEventListener('click', function sub(obj) {
+        let decrease = obj.target.parentNode
+        decrease.children[0].innerText --
+    })
 }
 
 

@@ -1,10 +1,18 @@
 {
-    "playerId" : [
-        {
-            "fullname": "Test Name",
-            "playertag": "Test Tag",
-            "birthday": "00/00/0000",
-            "wins": "0"
-        }
-    ]
+  "players": [
+    {
+      "fullname": "nick",
+      "playertag": "nicklpickl",
+      "birthday": "02/21/1992",
+      "wins": 3,
+      "id": 1
+    },
+    {
+      "fullname": "leonardo",
+      "playertag": "mkleo",
+      "birthday": "00/00/0000",
+      "wins": 0,
+      "id": 2
+    }
+  ]
 }

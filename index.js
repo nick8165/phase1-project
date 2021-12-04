@@ -49,17 +49,16 @@ register.addEventListener('submit', function(event) {
     event.preventDefault()
     let fullname = document.querySelector('#fullname')
     let playertag = document.querySelector('#playertag')
-    let birthday = document.querySelector('#birthday')
     
-    let createdPlayer = createPlayerFile(fullname, playertag, birthday)
+    let createdPlayer = createPlayerFile(fullname, playertag)
     checkForExistingTag(createdPlayer)
+    window.alert("New Player Made")
 })
 
-function createPlayerFile(fullname, playertag, birthday) {
+function createPlayerFile(fullname, playertag) {
     let newPlayer = {
         fullname:fullname.value,
         playertag:playertag.value,
-        birthday:birthday.value,
         wins: 0
     }
     return newPlayer
@@ -145,8 +144,7 @@ for (const element of addButton) {
                 .then(data => {
                 let patchWinner = data.find(key => key.playertag === winner.innerText)
                 patchWinner.wins ++
-                patchWin(patchWinner)
-                console.log('works') 
+                patchWin(patchWinner) 
             })
         }
     })

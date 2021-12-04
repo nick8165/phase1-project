@@ -3,23 +3,26 @@
     {
       "fullname": "Nick Freeman",
       "playertag": "nicklpickl",
-      "birthday": "02/21/1992",
-      "wins": 7,
+      "wins": 1,
       "id": 1
     },
     {
       "fullname": "Leonardo Lopez",
       "playertag": "MkLeo",
-      "birthday": "00/00/0000",
-      "wins": 0,
+      "wins": 1,
       "id": 2
     },
     {
       "fullname": "Nairoby Quezada",
       "playertag": "Nairo",
-      "birthday": "00/00/0000",
       "wins": 0,
       "id": 3
+    },
+    {
+      "fullname": "Tyler Martins",
+      "playertag": "Marss",
+      "wins": 1,
+      "id": 4
     }
   ]
 }

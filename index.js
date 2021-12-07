@@ -1,5 +1,4 @@
 const bracketNumber = document.querySelector('#participants')
-const main = document.querySelector('main')
 const playerSearch = document.querySelector('.search')
 const register = document.querySelector('#registration')
 
@@ -11,38 +10,35 @@ bracketNumber.addEventListener('submit', function (e) {
     let cls4h = document.getElementsByClassName('brk4-hidden')
     let cls8 = document.getElementsByClassName('brk8')
     let cls8h = document.getElementsByClassName('brk8-hidden')
+
     if (num.value === '4') {
-        while(cls4.length) {
-            cls4[0].className = 'brk4-hidden'
-        }
-        while (cls8.length) {
-            cls8[0].className = 'brk8-hidden'
-        }
+        whileLoop(cls4, 'brk4-hidden')
+        whileLoop(cls8, 'brk8-hidden')
     }
+
     if (num.value === '8' && cls8.length != 0) {
-        while (cls8.length) {
-            cls8[0].className = 'brk8-hidden'
-        }
-    } 
+        whileLoop(cls8, 'brk8-hidden')
+    }
+
     if (num.value === '8') {
-        while (cls4h.length) {
-            cls4h[0].className = 'brk4'
-        }
+        whileLoop(cls4h, 'brk4')
     }
+
     if (num.value === '16' && cls4.length === 0) {
-        while(cls4h.length) {
-            cls4h[0].className = 'brk4'
-        }
-        while(cls8h.length) {
-            cls8h[0].className = 'brk8'
-        }
+        whileLoop(cls4h, 'brk4')
+        whileLoop(cls8h, 'brk8')
     }
+
     if (num.value === '16' && cls4.length != 0) {
-        while(cls8h.length) {
-            cls8h[0].className = 'brk8'
-        }
+        whileLoop(cls8h, 'brk8')
     }
 })
+
+function whileLoop(obj, thisClass) {
+    while(obj.length) {
+        obj[0].className = thisClass
+    }
+}
 
 //Registry//
 register.addEventListener('submit', function(event) {

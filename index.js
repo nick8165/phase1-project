@@ -48,7 +48,6 @@ register.addEventListener('submit', function(event) {
     
     let createdPlayer = createPlayerFile(fullname, playertag)
     checkForExistingTag(createdPlayer)
-    window.alert("New Player Made")
 })
 
 function createPlayerFile(fullname, playertag) {
@@ -83,7 +82,7 @@ function postPlayerId(createdPlayer) {
         body: JSON.stringify(createdPlayer)
     })
     .then(res => res.json())
-    .then(json => console.log(json))
+    .then(json => window.alert("New Player Made"))
 }
 
 //Placing Player in Bracket//

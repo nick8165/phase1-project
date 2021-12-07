@@ -3,7 +3,7 @@ const playerSearch = document.querySelector('.search')
 const register = document.querySelector('#registration')
 
 // Forming the bracket//
-bracketNumber.addEventListener('submit', function (e) {
+bracketNumber.addEventListener('submit', (e) => {
     e.preventDefault()
     let num = document.querySelector('#participant-number')
     let cls4 = document.getElementsByClassName('brk4')
@@ -34,14 +34,14 @@ bracketNumber.addEventListener('submit', function (e) {
     }
 })
 
-function whileLoop(obj, thisClass) {
+function whileLoop (obj, thisClass) {
     while(obj.length) {
         obj[0].className = thisClass
     }
 }
 
 //Registry//
-register.addEventListener('submit', function(event) {
+register.addEventListener('submit', (event) => {
     event.preventDefault()
     let fullname = document.querySelector('#fullname')
     let playertag = document.querySelector('#playertag')
@@ -86,20 +86,20 @@ function postPlayerId(createdPlayer) {
 }
 
 //Placing Player in Bracket//
-const playerNumber = document.getElementsByClassName('search')
-for (const element of playerNumber) {
-    element.addEventListener('keyup', function(event) {
+const player = document.getElementsByClassName('search')
+for (const element of player) {
+    element.addEventListener('keyup', (event) => {
         if (event.keyCode === 13) {
             event.preventDefault()
+            let playerName = event.target
             fetch('http://localhost:3000/players')
             .then(res => res.json())
             .then(data => {
-                let tag = data.find(key => key.playertag === event.target.value)
+                let tag = data.find(key => key.playertag === playerName.value)
                 if (tag !== undefined) {
-                    event.target.className = "search-hidden"
-                    let playerId = event.target.value
+                    playerName.className = "search-hidden"
                     let p = event.target.nextSibling.nextSibling.nextSibling.nextSibling
-                    p.innerText = playerId
+                    p.innerText = playerName.value
                 } else {
                     window.alert("Must register first")
                 }
@@ -111,7 +111,7 @@ for (const element of playerNumber) {
 //Delete Player From Bracket//
 let del = document.getElementsByClassName('delete')
 for (const element of del) {
-    element.addEventListener('click', function(event) {
+    element.addEventListener('click', (event) => {
         let para = event.target.parentNode.nextSibling.nextSibling
         let search = event.target.parentNode.parentNode.children
         let div = event.target.parentNode
@@ -126,7 +126,7 @@ for (const element of del) {
 //Increase and Decrease Win//
 let addButton = document.getElementsByClassName('add')
 for (const element of addButton) {
-    element.addEventListener('click', function add(event) {
+    element.addEventListener('click', (event) => {
         let increase = event.target.parentNode
         increase.children[0].innerText ++
         if (increase.children[0].innerText === '3') {
@@ -137,31 +137,31 @@ for (const element of addButton) {
             fetch('http://localhost:3000/players')
                 .then(res => res.json())
                 .then(data => {
-                let patchWinner = data.find(key => key.playertag === winner.innerText)
-                patchWinner.wins ++
-                patchWin(patchWinner) 
+                let roundWinner = data.find(key => key.playertag === winner.innerText)
+                roundWinner.wins ++
+                patchWin(roundWinner) 
             })
         }
     })
 }
 
-function patchWin(patchWinner) {
-    fetch(`http://localhost:3000/players/${patchWinner.id}`,{
+function patchWin(roundWinner) {
+    fetch(`http://localhost:3000/players/${roundWinner.id}`,{
         method: "PATCH",
         headers: {
             "Accept": "application/json",
             "Content-Type": "application/json"
         },
-        body: JSON.stringify(patchWinner)
+        body: JSON.stringify(roundWinner)
     })
     .then(res => res.json())
     .then(json => console.log(json))
 }
 
 let subButton = document.getElementsByClassName('sub')
-for (const obj of subButton) {
-    obj.addEventListener('click', function sub(obj) {
-        let decrease = obj.target.parentNode
+for (const element of subButton) {
+    element.addEventListener('click', (event) => {
+        let decrease = event.target.parentNode
         decrease.children[0].innerText --
     })
 }

@@ -3,8 +3,8 @@ const playerSearch = document.querySelector('.search')
 const register = document.querySelector('#registration')
 
 // Forming the bracket//
-bracketNumber.addEventListener('submit', (e) => {
-    e.preventDefault()
+bracketNumber.addEventListener('submit', (event) => {
+    event.preventDefault()
     let num = document.querySelector('#participant-number')
     let cls4 = document.getElementsByClassName('brk4')
     let cls4h = document.getElementsByClassName('brk4-hidden')
